@@ -3,7 +3,7 @@
    - Hashed assets are immutable, so they are cache-first.
    - Pages and other files are stale-while-revalidate: instant offline, refreshed in the background.
    Bump VERSION to force old caches to be dropped. */
-const VERSION = "v3";
+const VERSION = "v4";
 const CACHE = `pera-${VERSION}`;
 const SHELL = [
   "/",

@@ -8,20 +8,18 @@ export default function Splash() {
   return (
     <motion.div
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-5"
-      style={{
-        background: `linear-gradient(180deg, #5aa9ff 0%, ${config.backgroundColor} 55%, #0c2262 100%)`,
-      }}
+      style={{ background: config.backgroundColor }}
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.35 }}
       aria-label={`${config.name} is loading`}
     >
-      <Logo size={112} animate />
+      <Logo size={200} animate />
       <motion.span
-        className="text-3xl font-extrabold tracking-tight text-white"
+        className="text-4xl font-extrabold tracking-tight text-white"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.45, ease: "easeOut" }}
+        transition={{ delay: 1.25, duration: 0.45, ease: "easeOut" }}
       >
         {config.name}
       </motion.span>

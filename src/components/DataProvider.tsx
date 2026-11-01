@@ -21,7 +21,7 @@ interface DataCtx {
   change: Change;
 }
 
-const emptySettings: Settings = { hideBalances: false, theme: "system", onboarded: false, createdAt: 0 };
+const emptySettings: Settings = { hideBalances: false, theme: "light", onboarded: false, createdAt: 0 };
 
 const Ctx = createContext<DataCtx>({
   ready: false,

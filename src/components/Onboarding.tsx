@@ -85,7 +85,7 @@ export default function Onboarding() {
   return (
     <div className="safe-top mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pb-[max(env(safe-area-inset-bottom),20px)]">
       <header className="flex items-center gap-3 pb-4 pt-2">
-        <Logo size={36} />
+        <Logo size={36} background />
         <span className="text-xl font-extrabold">{config.name}</span>
         <span className="ml-auto text-xs font-bold text-muted">Step {step === "pick" ? 1 : 2} of 2</span>
       </header>
@@ -115,13 +115,13 @@ export default function Onboarding() {
                     onClick={() => toggle(p.key)}
                     aria-pressed={on}
                     className={`pressable relative flex min-h-[96px] flex-col items-center justify-center gap-2 rounded-3xl p-2 ${
-                      on ? "bg-white/25 ring-2 ring-white" : "bg-card"
+                      on ? "bg-mint ring-2 ring-brand" : "bg-card"
                     }`}
                   >
                     <Avatar account={p} size={46} />
                     <span className="text-xs font-bold">{p.name}</span>
                     {on && (
-                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[#1d4ed8]">
+                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-white">
                         <Check size={13} strokeWidth={4} />
                       </span>
                     )}
@@ -133,9 +133,9 @@ export default function Onboarding() {
                   addCustom();
                   setStep("balances");
                 }}
-                className="pressable flex min-h-[96px] flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-white/50 p-2"
+                className="pressable flex min-h-[96px] flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-line p-2"
               >
-                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-white/15">
+                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-soft">
                   <Plus />
                 </span>
                 <span className="text-xs font-bold">Custom</span>
@@ -145,7 +145,7 @@ export default function Onboarding() {
               <button
                 onClick={() => setStep("balances")}
                 disabled={rows.length === 0}
-                className="pressable min-h-[52px] w-full rounded-2xl bg-white px-5 text-base font-extrabold text-[#1d4ed8] disabled:opacity-40"
+                className="pressable min-h-[52px] w-full rounded-2xl bg-brand px-5 text-base font-extrabold text-white disabled:opacity-40"
               >
                 Continue{rows.length > 0 ? ` (${rows.length})` : ""}
               </button>
@@ -171,7 +171,7 @@ export default function Onboarding() {
               {rows.map((r) => {
                 const liability = isLiabilityType(r.type);
                 return (
-                  <div key={r.key} className="sheet-surface rounded-3xl bg-sheet p-4 text-sheet-fg">
+                  <div key={r.key} className="sheet-surface rounded-3xl border border-line bg-sheet p-4 text-sheet-fg">
                     <div className="mb-3 flex items-center gap-3">
                       <Avatar account={{ color: r.color, initials: r.initials ?? makeInitials(r.name), type: r.type, name: r.name }} />
                       {r.custom ? (
@@ -223,7 +223,7 @@ export default function Onboarding() {
               })}
               <button
                 onClick={addCustom}
-                className="pressable min-h-[48px] rounded-2xl border-2 border-dashed border-white/40 font-bold"
+                className="pressable min-h-[48px] rounded-2xl border-2 border-dashed border-line font-bold"
               >
                 + Add another custom account
               </button>
@@ -242,7 +242,6 @@ export default function Onboarding() {
               <PrimaryButton
                 onClick={finish}
                 disabled={saving || rows.length === 0 || incomplete}
-                className="!bg-white !text-[#1d4ed8] font-extrabold"
               >
                 {confirmNeg ? "Yes, continue" : "See my net worth"}
               </PrimaryButton>

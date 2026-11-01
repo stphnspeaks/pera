@@ -54,7 +54,7 @@ function Group({
   const { openSheet } = useUI();
   return (
     <Rise i={i}>
-      <section className="rounded-[28px] bg-card p-5" aria-label={title}>
+      <section className="rounded-[28px] border border-line bg-card px-5 pb-2 pt-4" aria-label={title}>
         <div className="mb-2 flex items-baseline justify-between">
           <h2 className="text-lg font-extrabold">{title}</h2>
           <Money centavos={total} className="text-sm font-bold text-muted" />
@@ -62,20 +62,19 @@ function Group({
         {list.length === 0 ? (
           <p className="py-2 text-sm text-muted">Nothing here yet.</p>
         ) : (
-          <ul>
+          <ul className="divide-y divide-line">
             {list.map((a) => (
               <li key={a.id}>
                 <button
                   onClick={() => openSheet({ kind: "balance", accountId: a.id })}
-                  className="pressable my-1 flex min-h-[68px] w-full items-center gap-3 rounded-3xl px-2 py-1 text-left"
-                  style={{ background: `linear-gradient(90deg, ${a.color}40, ${a.color}00 75%)` }}
+                  className="pressable flex min-h-[68px] w-full items-center gap-3 py-2 text-left"
                 >
                   <Avatar account={a} />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-bold">{a.name}</span>
                     <span className="block text-xs text-muted">{a.type}</span>
                   </span>
-                  <Money centavos={balances.get(a.id) ?? 0} className="font-extrabold" />
+                  <Money centavos={balances.get(a.id) ?? 0} className="font-extrabold" decimalClassName="text-muted" />
                   <ChevronRight size={18} className="opacity-60" aria-hidden />
                 </button>
               </li>

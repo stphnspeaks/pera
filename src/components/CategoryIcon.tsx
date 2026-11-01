@@ -26,6 +26,7 @@ const ICONS: Record<string, LucideIcon> = {
   other: Ellipsis,
 };
 
+/** Flat rounded tile in the category color. `ghost` is for use on top of a colored background. */
 export default function CategoryIcon({
   id,
   size = 44,
@@ -40,12 +41,11 @@ export default function CategoryIcon({
   return (
     <span
       aria-hidden
-      className="inline-flex shrink-0 items-center justify-center rounded-[34%] text-white"
+      className="inline-flex shrink-0 items-center justify-center rounded-2xl text-white"
       style={{
         width: size,
         height: size,
-        background: ghost ? "rgba(255,255,255,0.25)" : `linear-gradient(150deg, ${color}, ${color}cc)`,
-        boxShadow: "inset 0 0 0 1.5px rgba(255,255,255,0.3)",
+        background: ghost ? "rgba(255,255,255,0.25)" : color,
       }}
     >
       <Icon size={size * 0.5} strokeWidth={2.3} />

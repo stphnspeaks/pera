@@ -81,7 +81,7 @@ function Option({
       disabled={disabled}
       className="pressable flex min-h-[64px] items-center gap-4 rounded-2xl bg-sheet-field p-4 text-left disabled:opacity-50"
     >
-      <span className="text-[#1d6fe0]">{icon}</span>
+      <span className="text-brand">{icon}</span>
       <span>
         <span className="block font-extrabold">{title}</span>
         <span className="block text-sm text-sheet-muted">{body}</span>

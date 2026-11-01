@@ -56,7 +56,7 @@ export interface Settings {
 
 export const defaultSettings = (): Settings => ({
   hideBalances: false,
-  theme: "system",
+  theme: "light",
   onboarded: false,
   createdAt: Date.now(),
 });

@@ -1,4 +1,4 @@
-# Pera: personal net worth tracker (PWA)
+# Nest: personal net worth tracker (PWA)
 
 Tracks how much you have in each bank, e-wallet and cash account and adds it up into one net worth number in Philippine pesos. Everything is stored **on your device** (IndexedDB). There is no backend, no login, no bank connection, no API key and no external service. It works fully offline once installed.
 
@@ -44,12 +44,11 @@ Everything lives in [`app.config.json`](app.config.json):
 | Key | Used for |
 | --- | --- |
 | `name`, `shortName`, `description` | In-app header and splash, page title, manifest, iOS launch images |
-| `themeColor`, `backgroundColor` | Manifest colors (Android status bar and launch screen), splash gradient |
-| `brandLight`, `brandDark` | Gradient of the generated app icon |
+| `themeColor`, `backgroundColor` | Manifest colors (Android status bar and launch screen), the app icon fill and the splash screen (the brand green) |
 
-After editing, run `npm run build` (or `npm run icons`) to regenerate the icons, launch images and manifest. The in-app color theme (background gradient, cards, light/dark palettes) is a set of CSS variables at the top of [`src/app/globals.css`](src/app/globals.css). If you rename the app, also bump `VERSION` in [`public/sw.js`](public/sw.js) so phones drop the old cache.
+After editing, run `npm run build` (or `npm run icons`) to regenerate the icons, launch images and manifest. The in-app color theme (flat light/dark palettes and the green accent) is a set of CSS variables at the top of [`src/app/globals.css`](src/app/globals.css). If you rename the app, also bump `VERSION` in [`public/sw.js`](public/sw.js) so phones drop the old cache.
 
-The logo is a simple geometric mark (three rising bars and a coin ring) defined in [`src/components/Logo.tsx`](src/components/Logo.tsx) and mirrored in `scripts/generate-icons.mjs`. Change both if you redraw it.
+The logo is a bird in a nest with a coin. Its shapes live in [`src/lib/nest-mark.json`](src/lib/nest-mark.json) and are used by both the animated [`Logo`](src/components/Logo.tsx) component and the icon generator, so edit that one file to redraw it. The splash animation (coin drops into the nest, then the bird flaps) is in `Logo.tsx`.
 
 ## How it works
 

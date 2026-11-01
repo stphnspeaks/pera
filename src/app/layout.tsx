@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Manrope } from "next/font/google";
 import config from "@config";
 import "./globals.css";
 
-const font = Plus_Jakarta_Sans({
+const font = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: config.name,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     startupImage: [
       {
         url: "/splash/iphone13-1170x2532.png",
@@ -46,7 +46,7 @@ export const viewport: Viewport = {
 };
 
 // Applies the saved theme before first paint to avoid a light/dark flash.
-const themeScript = `try{var t=localStorage.getItem('pera-theme');var d=t==='dark'||((!t||t==='system')&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}`;
+const themeScript = `try{var t=localStorage.getItem('pera-theme');var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

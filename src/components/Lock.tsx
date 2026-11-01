@@ -30,7 +30,7 @@ export default function Lock({ pinHash, onUnlock }: { pinHash: string; onUnlock:
   return (
     <div className="safe-top safe-bottom fixed inset-0 z-[90] flex flex-col items-center justify-between px-6 py-10">
       <div className="mt-8 flex flex-col items-center gap-2">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-soft">
           <LockIcon size={26} />
         </span>
         <h1 className="text-xl font-extrabold">{config.name} is locked</h1>
@@ -49,7 +49,7 @@ export default function Lock({ pinHash, onUnlock }: { pinHash: string; onUnlock:
         {Array.from({ length: 6 }).map((_, i) => (
           <span
             key={i}
-            className={`h-3.5 w-3.5 rounded-full border-2 border-white ${i < pin.length ? "bg-white" : ""}`}
+            className={`h-3.5 w-3.5 rounded-full border-2 border-fg ${i < pin.length ? "bg-fg" : ""}`}
           />
         ))}
       </motion.div>
@@ -62,9 +62,13 @@ export default function Lock({ pinHash, onUnlock }: { pinHash: string; onUnlock:
         ))}
         <span />
         <Key onClick={() => press("0")}>0</Key>
-        <Key onClick={() => setPin((p) => p.slice(0, -1))} label="Delete">
-          <Delete size={24} />
-        </Key>
+        {pin.length > 0 ? (
+          <Key onClick={() => setPin((p) => p.slice(0, -1))} label="Delete">
+            <Delete size={24} />
+          </Key>
+        ) : (
+          <span aria-hidden />
+        )}
       </div>
     </div>
   );
@@ -83,7 +87,7 @@ function Key({
     <button
       onClick={onClick}
       aria-label={label}
-      className="pressable glass flex h-16 items-center justify-center rounded-full text-2xl font-bold"
+      className="pressable flex h-16 border border-line bg-card items-center justify-center rounded-full text-2xl font-bold"
     >
       {children}
     </button>

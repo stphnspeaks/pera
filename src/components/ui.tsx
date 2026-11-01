@@ -15,7 +15,7 @@ export function shade(hex: string, t: number): string {
   return `rgb(${ch((n >> 16) & 255)}, ${ch((n >> 8) & 255)}, ${ch(n & 255)})`;
 }
 
-/** Bank logo tile when we have one for the name, otherwise a gradient monogram badge. */
+/** Bank logo when we have one for the name, otherwise a flat monogram circle. */
 export function Avatar({
   account,
   size = 44,
@@ -31,11 +31,7 @@ export function Avatar({
       <span
         aria-hidden
         className="relative inline-block shrink-0 overflow-hidden rounded-full bg-white"
-        style={{
-          width: size,
-          height: size,
-          boxShadow: "0 6px 14px -4px rgba(0,0,0,0.45), inset 0 0 0 1.5px rgba(255,255,255,0.35)",
-        }}
+        style={{ width: size, height: size, boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.08)" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logo} alt="" width={size} height={size} draggable={false} className="h-full w-full object-cover" />
@@ -45,27 +41,16 @@ export function Avatar({
   return (
     <span
       aria-hidden
-      className="relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-extrabold text-white"
+      className="inline-flex shrink-0 select-none items-center justify-center rounded-full font-extrabold text-white"
       style={{
         width: size,
         height: size,
-        background: `linear-gradient(150deg, ${shade(account.color, 0.28)} 0%, ${account.color} 52%, ${shade(account.color, -0.3)} 100%)`,
+        background: account.color,
         fontSize: size * (len > 2 ? 0.3 : 0.4),
         letterSpacing: "-0.02em",
-        textShadow: "0 1px 2px rgba(0,0,0,0.3)",
-        boxShadow: `0 6px 14px -4px ${shade(account.color, -0.35)}, inset 0 0 0 1.5px rgba(255,255,255,0.3)`,
       }}
     >
-      <span
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,0.45), rgba(255,255,255,0) 55%)",
-        }}
-      />
-      <span className="relative">
-        {cash ? <Banknote size={size * 0.5} strokeWidth={2.4} /> : account.initials}
-      </span>
+      {cash ? <Banknote size={size * 0.5} strokeWidth={2.4} /> : account.initials}
     </span>
   );
 }
@@ -73,7 +58,7 @@ export function Avatar({
 export function Chip({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold ${className}`}
+      className={`inline-flex items-center gap-1 rounded-full bg-soft px-3 py-1.5 text-xs font-bold ${className}`}
     >
       {children}
     </span>
@@ -87,7 +72,7 @@ export function PrimaryButton({
   return (
     <button
       {...props}
-      className={`pressable btn-glow min-h-[54px] w-full rounded-[20px] px-5 text-base font-extrabold text-white disabled:opacity-40 disabled:shadow-none ${className}`}
+      className={`pressable min-h-[54px] w-full rounded-2xl bg-brand px-5 text-base font-extrabold text-white disabled:opacity-40 ${className}`}
     />
   );
 }
@@ -100,6 +85,19 @@ export function SecondaryButton({
     <button
       {...props}
       className={`pressable min-h-[48px] w-full rounded-2xl bg-sheet-field px-5 text-base font-bold text-sheet-fg disabled:opacity-40 ${className}`}
+    />
+  );
+}
+
+/** Mint action button with green text, like a wallet app's Cash in / Send. */
+export function MintButton({
+  className = "",
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      {...props}
+      className={`pressable flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-2xl bg-mint px-3 text-[15px] font-extrabold text-mint-fg ${className}`}
     />
   );
 }
@@ -123,7 +121,7 @@ export function Empty({
 }
 
 export function ScreenTitle({ children }: { children: ReactNode }) {
-  return <h1 className="px-1 pb-4 pt-2 text-2xl font-extrabold tracking-tight">{children}</h1>;
+  return <h1 className="px-1 pb-4 pt-2 text-[28px] font-extrabold tracking-tight">{children}</h1>;
 }
 
 /** Short staggered entrance (transform + opacity only). */
@@ -139,9 +137,9 @@ export function Rise({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.04 + i * 0.07, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay: 0.03 + i * 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

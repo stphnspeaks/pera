@@ -51,7 +51,7 @@ function Shell() {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const t = window.setTimeout(() => setSplash(false), reduce ? 0 : 1500);
+    const t = window.setTimeout(() => setSplash(false), reduce ? 0 : 2300);
     return () => window.clearTimeout(t);
   }, []);
 
@@ -135,7 +135,7 @@ function Main() {
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#0b1a3a] shadow-xl">
+            <span className="rounded-full bg-fg px-5 py-3 text-sm font-bold text-page shadow-xl">
               {toast}
             </span>
           </motion.div>

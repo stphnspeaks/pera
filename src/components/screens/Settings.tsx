@@ -56,7 +56,7 @@ export default function Settings() {
       <ScreenTitle>Settings</ScreenTitle>
 
       <Rise>
-        <div className="flex gap-3 rounded-[28px] bg-white/15 p-4">
+        <div className="flex gap-3 rounded-[28px] bg-mint p-4 text-mint-fg">
           <ShieldCheck className="mt-0.5 shrink-0" />
           <p className="text-sm">
             <span className="font-extrabold">Your data stays on this device.</span> {config.name} has no
@@ -68,15 +68,15 @@ export default function Settings() {
 
       <Rise i={1}>
         <Card title="Appearance">
-          <div className="flex rounded-2xl bg-white/10 p-1" role="radiogroup" aria-label="Theme">
-            {(["system", "light", "dark"] as ThemePref[]).map((t) => (
+          <div className="flex rounded-2xl bg-soft p-1" role="radiogroup" aria-label="Theme">
+            {(["light", "dark", "system"] as ThemePref[]).map((t) => (
               <button
                 key={t}
                 role="radio"
                 aria-checked={settings.theme === t}
                 onClick={() => saveSettings({ theme: t })}
                 className={`pressable min-h-[44px] flex-1 rounded-xl text-sm font-bold capitalize ${
-                  settings.theme === t ? "bg-white text-[#1d4ed8]" : ""
+                  settings.theme === t ? "bg-fg text-page" : "text-muted"
                 }`}
               >
                 {t}
@@ -196,7 +196,7 @@ export default function Settings() {
 
 function Card({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="flex flex-col gap-2 rounded-[28px] bg-card p-5" aria-label={title}>
+    <section className="flex flex-col gap-2 rounded-[28px] border border-line bg-card p-5" aria-label={title}>
       <h2 className="text-lg font-extrabold">{title}</h2>
       {children}
     </section>
@@ -226,7 +226,7 @@ function Toggle({
         <span className="block text-xs text-muted">{hint}</span>
       </span>
       <span
-        className={`flex h-8 w-14 shrink-0 items-center rounded-full p-1 transition-colors ${checked ? "bg-up" : "bg-white/25"}`}
+        className={`flex h-8 w-14 shrink-0 items-center rounded-full p-1 transition-colors ${checked ? "bg-up" : "bg-[#c8cbd2] dark:bg-[#3a3a40]"}`}
       >
         <span
           className="h-6 w-6 rounded-full bg-white shadow transition-transform"
@@ -257,10 +257,10 @@ function Row({
       onClick={onClick}
       className="pressable flex min-h-[56px] w-full items-center gap-3 text-left"
     >
-      <span className={danger ? "text-down" : warn ? "text-amber-300" : "text-accent"}>{icon}</span>
+      <span className={danger ? "text-down" : warn ? "text-down" : "text-accent"}>{icon}</span>
       <span className="flex-1">
         <span className={`block font-bold ${danger ? "text-down" : ""}`}>{title}</span>
-        <span className={`block text-xs ${warn ? "font-bold text-amber-300" : "text-muted"}`}>
+        <span className={`block text-xs ${warn ? "font-bold text-down" : "text-muted"}`}>
           {warn ? `${hint} · backup overdue` : hint}
         </span>
       </span>

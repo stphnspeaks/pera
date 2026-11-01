@@ -1,0 +1,29 @@
+{
+  "back": [
+    { "tag": "path", "d": "M80 330 Q256 276 432 330 Q256 392 80 330 Z", "fill": "#4a2e14" },
+    { "tag": "path", "d": "M80 330 Q256 276 432 330", "fill": "none", "stroke": "#8a5a2e", "strokeWidth": 16, "strokeLinecap": "round" }
+  ],
+  "bird": [
+    { "tag": "path", "d": "M134 268 L88 238 L140 308 Z", "fill": "#fffdf7", "stroke": "#fffdf7", "strokeWidth": 8, "strokeLinejoin": "round" },
+    { "tag": "ellipse", "cx": 224, "cy": 285, "rx": 108, "ry": 82, "fill": "#f6edd9" },
+    { "tag": "circle", "cx": 278, "cy": 222, "r": 62, "fill": "#f6edd9" },
+    { "tag": "path", "d": "M326 220 L368 234 L326 248 Z", "fill": "#f2a516", "stroke": "#f2a516", "strokeWidth": 8, "strokeLinejoin": "round" },
+    { "tag": "circle", "cx": 296, "cy": 214, "r": 9, "fill": "#20201e" },
+    { "tag": "circle", "cx": 299, "cy": 211, "r": 3, "fill": "#ffffff" }
+  ],
+  "wing": [
+    { "tag": "ellipse", "cx": 212, "cy": 292, "rx": 62, "ry": 38, "transform": "rotate(-12 212 292)", "fill": "#dccaa5" },
+    { "tag": "path", "d": "M176 298 Q214 284 252 296", "fill": "none", "stroke": "#c4ad82", "strokeWidth": 6, "strokeLinecap": "round" }
+  ],
+  "coin": [
+    { "tag": "circle", "cx": 396, "cy": 336, "r": 31, "fill": "#f6b92b" },
+    { "tag": "circle", "cx": 396, "cy": 336, "r": 21, "fill": "none", "stroke": "#d99a17", "strokeWidth": 5 },
+    { "tag": "path", "d": "M385 326 Q391 318 400 318", "fill": "none", "stroke": "#fde7a1", "strokeWidth": 4, "strokeLinecap": "round" }
+  ],
+  "front": [
+    { "tag": "path", "d": "M80 330 Q256 392 432 330 C420 440 330 466 256 466 C182 466 92 440 80 330 Z", "fill": "#9b6b3b" },
+    { "tag": "path", "d": "M104 384 Q256 430 408 384", "fill": "none", "stroke": "#7a4d26", "strokeWidth": 7, "strokeLinecap": "round" },
+    { "tag": "path", "d": "M132 424 Q256 456 380 424", "fill": "none", "stroke": "#7a4d26", "strokeWidth": 7, "strokeLinecap": "round" },
+    { "tag": "path", "d": "M80 330 Q256 392 432 330", "fill": "none", "stroke": "#c18b52", "strokeWidth": 12, "strokeLinecap": "round" }
+  ]
+}

@@ -57,7 +57,7 @@ export default function Sheet({
               className="touch-none px-5 pt-2.5"
               onPointerDown={(e) => controls.start(e)}
             >
-              <span className="mx-auto mb-2 block h-1.5 w-11 rounded-full bg-sheet-muted/40" />
+              <span className="mx-auto mb-2 block h-1.5 w-11 rounded-full bg-line" />
               <div className="flex items-center justify-between pb-2">
               <h2 id={titleId} className="text-xl font-extrabold tracking-tight">
                 {title}

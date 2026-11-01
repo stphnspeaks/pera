@@ -9,7 +9,7 @@ import CategoryIcon from "./CategoryIcon";
 import { useData } from "./DataProvider";
 import Sheet from "./Sheet";
 import { Check } from "lucide-react";
-import { Avatar, PrimaryButton, shade } from "./ui";
+import { Avatar, PrimaryButton } from "./ui";
 import { useUI } from "./ui-context";
 
 const LAST_ACCOUNT_KEY = "pera-last-expense-account";
@@ -118,18 +118,10 @@ export default function AddExpenseSheet({ open }: { open: boolean }) {
                     aria-checked={on}
                     onClick={() => setCategory(c.id)}
                     className={`pressable flex min-h-[84px] flex-col items-center justify-center gap-1.5 rounded-3xl p-2 text-center ${
-                      on ? "text-white" : "bg-sheet-field"
+                      on ? "bg-mint ring-2 ring-brand" : "bg-sheet-field"
                     }`}
-                    style={
-                      on
-                        ? {
-                            background: `linear-gradient(150deg, ${shade(c.color, 0.15)}, ${shade(c.color, -0.2)})`,
-                            boxShadow: `0 12px 22px -10px ${c.color}, inset 0 1px 0 rgba(255,255,255,0.35)`,
-                          }
-                        : undefined
-                    }
                   >
-                    <CategoryIcon id={c.id} size={36} ghost={on} />
+                    <CategoryIcon id={c.id} size={36} />
                     <span className="text-[11px] font-extrabold leading-tight">{c.label}</span>
                   </button>
                 );
@@ -157,25 +149,21 @@ export default function AddExpenseSheet({ open }: { open: boolean }) {
                       setAccountId(a.id);
                       setConfirm(false);
                     }}
-                    className={`pressable relative flex h-[104px] w-[158px] shrink-0 snap-start flex-col justify-between rounded-3xl p-3.5 text-left text-white transition-opacity ${
-                      on ? "opacity-100 ring-[3px] ring-white/90 ring-offset-2 ring-offset-[#1d6fe0]" : "opacity-60"
+                    className={`pressable relative flex h-[104px] w-[158px] shrink-0 snap-start flex-col justify-between rounded-3xl p-3.5 text-left ${
+                      on ? "bg-mint ring-2 ring-brand" : "bg-sheet-field"
                     }`}
-                    style={{
-                      background: `linear-gradient(145deg, ${shade(a.color, 0.2)} 0%, ${a.color} 45%, ${shade(a.color, -0.35)} 100%)`,
-                      boxShadow: `0 14px 24px -12px ${a.color}`,
-                    }}
                   >
                     <span className="flex items-center justify-between">
                       <Avatar account={a} size={30} />
                       {on && (
-                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[#1d4ed8]">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-white">
                           <Check size={14} strokeWidth={4} />
                         </span>
                       )}
                     </span>
                     <span>
-                      <span className="block truncate text-sm font-extrabold leading-tight">{a.name}</span>
-                      <span className="num block text-xs font-semibold text-white/85">
+                      <span className="block truncate text-sm font-extrabold leading-tight text-sheet-fg">{a.name}</span>
+                      <span className="num block text-xs font-semibold text-sheet-muted">
                         {a.isLiability ? "Owed " : ""}
                         {formatPHP(balances.get(a.id) ?? 0)}
                       </span>
@@ -196,7 +184,7 @@ export default function AddExpenseSheet({ open }: { open: boolean }) {
               onChange={(e) => setNote(e.target.value)}
               maxLength={80}
               placeholder="e.g. Lunch with team"
-              className="min-h-[52px] w-full rounded-2xl bg-sheet-field px-4 text-base text-sheet-fg outline-none placeholder:text-sheet-muted/60"
+              className="min-h-[52px] w-full rounded-2xl bg-sheet-field px-4 text-base text-sheet-fg outline-none placeholder:text-sheet-muted"
             />
           </div>
 

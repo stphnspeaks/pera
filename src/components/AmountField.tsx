@@ -65,7 +65,7 @@ export default function AmountField({
           placeholder="0.00"
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-err` : undefined}
-          className="num min-h-[76px] w-full bg-transparent px-8 text-center text-[44px] font-extrabold tracking-tight text-sheet-fg outline-none placeholder:text-sheet-muted/40"
+          className="num min-h-[76px] w-full bg-transparent px-8 text-center text-[44px] font-extrabold tracking-tight text-sheet-fg outline-none placeholder:text-sheet-muted"
         />
       </div>
       <div className="mt-2 flex items-center justify-between gap-2">
@@ -82,7 +82,7 @@ export default function AmountField({
             onClick={() => onChange({ ...state, negative: !state.negative })}
             aria-pressed={state.negative}
             className={`pressable min-h-[44px] shrink-0 rounded-full px-4 text-sm font-bold ${
-              state.negative ? "bg-[#1d6fe0] text-white" : "bg-sheet-field text-sheet-fg"
+              state.negative ? "bg-brand text-white" : "bg-sheet-field text-sheet-fg"
             }`}
           >
             {isLiability ? "Credit (overpaid)" : "Negative"}

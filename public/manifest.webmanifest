@@ -1,14 +1,14 @@
 {
-  "name": "Pera",
-  "short_name": "Pera",
+  "name": "Nest",
+  "short_name": "Nest",
   "description": "Track your net worth across banks, e-wallets and cash. Private, offline, on your device.",
   "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#1f55cc",
-  "theme_color": "#2f7be0",
+  "background_color": "#1d7a5f",
+  "theme_color": "#f2f3f5",
   "icons": [
     {
       "src": "/icons/icon-192.png",

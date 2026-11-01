@@ -49,10 +49,10 @@ export default function Expenses() {
       <ScreenTitle>Expenses</ScreenTitle>
 
       <Rise>
-        <section className="glass glass-blur rounded-[32px] p-5 shadow-xl" aria-label="Spending summary">
+        <section className="rounded-[28px] border border-line bg-card p-5" aria-label="Spending summary">
           <p className="text-sm font-semibold text-muted">Spent in {monthName.format(now)}</p>
           <p className="mt-1 text-[36px] font-extrabold leading-tight tracking-tight">
-            <Money centavos={month} count />
+            <Money centavos={month} count decimalClassName="text-muted" />
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <Chip>
@@ -61,7 +61,7 @@ export default function Expenses() {
           </div>
           <button
             onClick={() => openSheet({ kind: "expense" })}
-            className="pressable mt-4 flex min-h-[52px] w-full items-center justify-center gap-2 rounded-2xl bg-white text-base font-extrabold text-[#1d4ed8]"
+            className="pressable mt-4 flex min-h-[52px] w-full items-center justify-center gap-2 rounded-2xl bg-brand text-base font-extrabold text-white"
           >
             <Plus size={20} strokeWidth={3} /> Add expense
           </button>
@@ -88,7 +88,7 @@ export default function Expenses() {
                         <span className="font-bold">{category.label}</span>
                         <Money centavos={total} className="font-bold" decimalClassName="opacity-60" />
                       </div>
-                      <div className="h-2.5 overflow-hidden rounded-full bg-white/10">
+                      <div className="h-2.5 overflow-hidden rounded-full bg-soft">
                         <div
                           className="h-full rounded-full"
                           style={{ width: `${Math.max(4, (total / month) * 100)}%`, background: category.color }}

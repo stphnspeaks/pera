@@ -70,7 +70,7 @@ export default function Analytics() {
       <Rise i={1}>
         <section className="rounded-[28px] bg-card p-5" aria-label="Assets versus liabilities">
           <h2 className="mb-3 text-lg font-extrabold">Assets vs Liabilities</h2>
-          <div className="h-3 overflow-hidden rounded-full bg-down/60" role="img" aria-label={`${Math.round(ratio * 100)}% assets`}>
+          <div className="h-3 overflow-hidden rounded-full bg-down" role="img" aria-label={`${Math.round(ratio * 100)}% assets`}>
             <div className="h-full origin-left rounded-full bg-up" style={{ width: `${ratio * 100}%` }} />
           </div>
           <dl className="mt-4 grid grid-cols-2 gap-3">

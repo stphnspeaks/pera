@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Clock, House, PieChart, Plus, Receipt, Settings, Wallet } from "lucide-react";
 import { useUI, type Tab } from "./ui-context";
 
@@ -15,27 +14,24 @@ const ITEMS: { tab: Tab; label: string; Icon: typeof House }[] = [
 
 export default function BottomNav() {
   const { tab, setTab, openSheet } = useUI();
-  const showFab = tab === "home" || tab === "accounts" || tab === "expenses";
+  const showFab = tab === "accounts" || tab === "expenses";
   const fabLabel = tab === "expenses" ? "Add expense" : "Add account";
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center">
-      <div className="relative w-full max-w-[480px] px-4 pb-[max(env(safe-area-inset-bottom),12px)]">
+      <div className="relative w-full max-w-[480px] px-5 pb-[max(env(safe-area-inset-bottom),14px)]">
         {showFab && (
-          <motion.button
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+          <button
             onClick={() => openSheet({ kind: tab === "expenses" ? "expense" : "add" })}
             aria-label={fabLabel}
-            className="pressable pointer-events-auto absolute -top-[68px] right-6 flex h-14 w-14 items-center justify-center rounded-full bg-white text-[#1d4ed8] shadow-xl"
+            className="pressable pointer-events-auto absolute -top-[66px] right-7 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white shadow-[0_8px_20px_-6px_rgba(0,0,0,0.45)]"
           >
             <Plus size={28} strokeWidth={3} />
-          </motion.button>
+          </button>
         )}
         <nav
           aria-label="Main"
-          className="glass glass-blur pointer-events-auto flex items-center justify-between rounded-[28px] p-1 shadow-2xl"
-          style={{ background: "rgba(10, 28, 78, 0.62)" }}
+          className="pointer-events-auto flex items-center justify-between rounded-[30px] bg-nav p-2 shadow-[0_14px_30px_-10px_rgba(0,0,0,0.5)]"
         >
           {ITEMS.map(({ tab: t, label, Icon }) => {
             const active = t === tab;
@@ -45,21 +41,11 @@ export default function BottomNav() {
                 onClick={() => setTab(t)}
                 aria-label={label}
                 aria-current={active ? "page" : undefined}
-                className="pressable relative flex min-h-[52px] min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-[20px]"
+                className={`pressable flex h-12 min-w-0 flex-1 items-center justify-center rounded-[20px] ${
+                  active ? "bg-brand text-white" : "text-white/75"
+                }`}
               >
-                {active && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-[20px] bg-white/20"
-                    transition={{ type: "spring", stiffness: 500, damping: 36 }}
-                  />
-                )}
-                <Icon size={21} className="relative" strokeWidth={active ? 2.6 : 2} />
-                <span
-                  className={`relative text-[10px] leading-none ${active ? "font-extrabold" : "font-semibold opacity-80"}`}
-                >
-                  {label}
-                </span>
+                <Icon size={23} strokeWidth={active ? 2.4 : 2} />
               </button>
             );
           })}

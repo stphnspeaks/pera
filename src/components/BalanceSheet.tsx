@@ -216,7 +216,7 @@ export default function BalanceSheet({ accountId }: { accountId: string | null }
                   className="block h-8 w-8 rounded-full"
                   style={{
                     background: c,
-                    boxShadow: color === c ? "0 0 0 3px var(--sheet), 0 0 0 5px #1d6fe0" : "none",
+                    boxShadow: color === c ? "0 0 0 3px var(--sheet), 0 0 0 5px var(--brand)" : "none",
                   }}
                 />
               </button>
